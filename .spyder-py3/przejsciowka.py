@@ -34,13 +34,16 @@ liczbaPomiarow = dfDir1.Spd1.count()
 #predkosci srednie całoroczne (niezaleznie od kierunkow)
 predkoscSrednia1 = dfDir1.Spd1.mean()
 predkoscSrednia2 = dfDir2.Spd2.mean()
-
+prDoSzorstkosci = dfDir1.Spd1[dfDir1.Spd1 > 5]
+prSrDoSzorst1 = prDoSzorstkosci.mean()
+prDoSzorstkosci2 = dfDir2.Spd2[dfDir2.Spd2 > 5]
+prSrDoSzorst2 = prDoSzorstkosci2.mean()
 #obliczanie szorstkosci
 wys1 = 70
 wys2 = 30
 
-szorstkoscLogarytmicznie = (((wys2)**(predkoscSrednia1/predkoscSrednia2))/wys1)**(1/((predkoscSrednia1/predkoscSrednia2)-1))
-szortkoscWykladniczo = wys1/math.exp(math.log(wys1/wys2,predkoscSrednia1/predkoscSrednia2))
+szorstkoscLogarytmicznie = (((wys2)**(prSrDoSzorst1/prSrDoSzorst2))/wys1)**(1/((prSrDoSzorst1/prSrDoSzorst2)-1))
+szortkoscWykladniczo = wys1/math.exp(math.log(wys1/wys2,prSrDoSzorst1/prSrDoSzorst2))
 
 #wsp dla 70m
 #metoda odchylenia standardowego 
